@@ -1,96 +1,862 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A. Ojeh | Environmental Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>A. Ojeh | Environmental Analyst & GIS Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3436;
+            background: #f0f2f5;
+        }
+
+        /* Professional Color Palette */
+        :root {
+            --primary: #0984e3;
+            --primary-dark: #074b8c;
+            --secondary: #00b894;
+            --accent: #e17055;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --white: #ffffff;
+            --gray: #636e72;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #00b09b, #96c93d);
+            --gradient-3: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-4: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 6rem 2rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gradient-2);
+            color: white;
+            padding: 2rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .experience-badge .years {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .expertise-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .expertise-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expertise-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .expertise-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .expertise-card p {
+            color: var(--gray);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-card-header {
+            padding: 2rem 2rem 1rem;
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+        }
+
+        .project-type {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-card-header h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .project-card-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .project-card-body p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .project-meta i {
+            color: var(--primary);
+            margin-right: 0.3rem;
+        }
+
+        .project-card-footer {
+            padding: 1.5rem 2rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .contact-item a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-badge {
+                width: 100px;
+                height: 100px;
+                padding: 1rem;
+            }
+            
+            .experience-badge .years {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="logo">A. Ojeh</h1>
+            <h1 class="logo">A.Ojeh</h1>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header id="home" class="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Environmental Analyst & GIS Specialist</h1>
-            <p>Specializing in remediation analytics, flood risk assessment, and environmental impact studies</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <h1>Environmental Analyst<br>& GIS Specialist</h1>
+            <p>Specializing in remediation analytics, flood risk assessment, and environmental impact studies with over 8 years of experience</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
         </div>
-    </header>
+    </section>
 
     <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>Environmental professional with expertise in remediation analytics, land use analysis, and environmental impact assessment. Experienced in using GIS technology for shoreline erosion analysis and flood risk assessment.</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">About Me</span>
+                <h2 class="section-title">Dedicated to Environmental <span class="highlight">Excellence</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-text">I am an experienced Environmental Analyst specializing in GIS technology and environmental impact assessment. My work focuses on providing data-driven solutions for complex environmental challenges, from shoreline erosion analysis to comprehensive flood risk assessments.</p>
+                    <p class="about-text">With a strong background in remediation analytics and land use analysis, I help organizations make informed decisions about environmental management and sustainable development.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Years Exp</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Reports</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Environmental Analysis">
+                    <div class="experience-badge">
+                        <span class="years">8+</span>
+                        <span class="text">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Areas of Expertise</span>
+                <h2 class="section-title">Specialized Technical <span class="highlight">Competencies</span></h2>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>GIS & Spatial Analysis</h3>
+                    <p>Advanced spatial modeling and cartographic visualization using industry-leading software</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Remediation Analytics</h3>
+                    <p>Comprehensive site assessment and remediation strategy development</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Flood Risk Assessment</h3>
+                    <p>Hydrological modeling and flood vulnerability mapping</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Erosion Analysis</h3>
+                    <p>Shoreline change detection and erosion trend analysis</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Land Use Analysis</h3>
+                    <p>Land cover classification and change detection</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Environmental Modeling</h3>
+                    <p>Predictive modeling and scenario analysis</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <!-- These will link to your PDF files -->
-            <div class="project-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>Ataba Remediation Analytics</h3>
-                <p>Comprehensive remediation analysis and environmental assessment report</p>
-                <a href="ATABA REMEDIATION ANALYTICS REPORT.pdf" target="_blank" class="project-link">View PDF →</a>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Portfolio</span>
+                <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
             </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-type">Remediation</span>
+                        <h3>Ataba Remediation Analytics</h3>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Comprehensive remediation analysis and environmental assessment report for contaminated site rehabilitation.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> 2024</span>
+                            <span><i class="far fa-file-pdf"></i> 45 pages</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="ATABA REMEDIATION ANALYTICS REPORT.pdf" target="_blank" class="project-link">View Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>Bodo Remediation Analysis</h3>
-                <p>Detailed remediation analytics and environmental impact study</p>
-                <a href="BODO REMEDIATION ANALYTICS REPORT.pdf" target="_blank" class="project-link">View PDF →</a>
-            </div>
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-type">Impact Assessment</span>
+                        <h3>Bodo Remediation Analysis</h3>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Detailed remediation analytics and environmental impact study for the Bodo community area.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> 2024</span>
+                            <span><i class="far fa-file-pdf"></i> 62 pages</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="BODO REMEDIATION ANALYTICS REPORT.pdf" target="_blank" class="project-link">View Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>Bodo Land Use Analysis</h3>
-                <p>Land use and land cover change analysis report</p>
-                <a href="BODO REMEDIATION LAND USE & LAND COV...pdf" target="_blank" class="project-link">View PDF →</a>
-            </div>
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-type">Land Cover Analysis</span>
+                        <h3>Bodo Land Use Analysis</h3>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Land use and land cover change analysis report with multi-temporal satellite imagery.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> 2024</span>
+                            <span><i class="far fa-file-pdf"></i> 38 pages</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="BODO REMEDIATION LAND USE & LAND COV...pdf" target="_blank" class="project-link">View Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>Flood Risk Analysis</h3>
-                <p>Comprehensive flood risk assessment and analysis report</p>
-                <a href="Flood Risk Analysis Report.pdf" target="_blank" class="project-link">View PDF →</a>
-            </div>
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-type">Risk Assessment</span>
+                        <h3>Flood Risk Analysis</h3>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Comprehensive flood risk assessment and analysis report with vulnerability mapping.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> 2023</span>
+                            <span><i class="far fa-file-pdf"></i> 71 pages</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="Flood Risk Analysis Report.pdf" target="_blank" class="project-link">View Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>Forcados Shoreline Erosion</h3>
-                <p>Shoreline erosion trend analysis and coastal management study</p>
-                <a href="Forcados shoreline erosion trend analysis.pdf" target="_blank" class="project-link">View PDF →</a>
-            </div>
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-type">Coastal Analysis</span>
+                        <h3>Forcados Shoreline Erosion</h3>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Shoreline erosion trend analysis and coastal management study for the Forcados area.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> 2023</span>
+                            <span><i class="far fa-file-pdf"></i> 53 pages</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="Forcados shoreline erosion trend analysis.pdf" target="_blank" class="project-link">View Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <i class="fas fa-file-pdf"></i>
-                <h3>Route Investigation Analysis</h3>
-                <p>Route investigation analysis for Nn... (complete filename)</p>
-                <a href="Report for Route Investigation Analysis for Nn....pdf" target="_blank" class="project-link">View PDF →</a>
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-type">Infrastructure</span>
+                        <h3>Route Investigation Analysis</h3>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Route investigation analysis with detailed GIS mapping and environmental considerations.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> 2023</span>
+                            <span><i class="far fa-file-pdf"></i> 47 pages</span>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="Report for Route Investigation Analysis for Nn....pdf" target="_blank" class="project-link">View Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>Interested in collaborating or learning more about my work?</p>
-        <div class="contact-links">
-            <a href="https://github.com/A-Ojeh" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="mailto:email@example.com"><i class="fas fa-envelope"></i> Email</a>
+        <div class="container">
+            <div class="contact-wrapper">
+                <h2 class="section-title">Let's Work Together</h2>
+                <p>Interested in collaborating or need environmental analysis expertise? I'm here to help with your next project.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:a.ojeh@example.com">a.ojeh@example.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Phone</h3>
+                        <a href="tel:+234123456789">+234 123 456 789</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Lagos, Nigeria</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/A-Ojeh" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 
