@@ -6,47 +6,72 @@
     <title>A. Ojeh | Environmental Analyst & GIS Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ===== PROFESSIONAL PORTFOLIO STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2d3436;
-            background: #f0f2f5;
-        }
-
-        /* Professional Color Palette */
         :root {
-            --primary: #0984e3;
-            --primary-dark: #074b8c;
-            --secondary: #00b894;
-            --accent: #e17055;
-            --dark: #2d3436;
-            --light: #f5f6fa;
+            /* Rich Color Palette */
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --primary-gradient: linear-gradient(135deg, #2563eb, #7c3aed);
+            
+            --secondary: #10b981;
+            --secondary-light: #34d399;
+            --secondary-dark: #059669;
+            --secondary-gradient: linear-gradient(135deg, #10b981, #0ea5e9);
+            
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --accent-dark: #d97706;
+            --accent-gradient: linear-gradient(135deg, #f59e0b, #ef4444);
+            
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray-800: #334155;
+            --gray-600: #64748b;
+            --gray-400: #94a3b8;
+            --gray-200: #e2e8f0;
+            --light: #f8fafc;
             --white: #ffffff;
-            --gray: #636e72;
+            
             --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #00b09b, #96c93d);
             --gradient-3: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-4: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
         }
 
-        /* Navigation */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
         .navbar {
             background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
         }
 
         .nav-container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -57,7 +82,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--gradient-1);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -72,19 +97,19 @@
             color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s;
+            background: var(--primary-gradient);
+            transition: 0.3s ease;
         }
 
         .nav-menu a:hover::after {
@@ -95,13 +120,16 @@
             color: var(--primary);
         }
 
-        /* Hero Section */
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-1);
             position: relative;
             overflow: hidden;
             margin-top: 70px;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
         }
 
         .hero::before {
@@ -119,12 +147,12 @@
         }
 
         .hero-content {
-            position: relative;
-            max-width: 800px;
+            max-width: 1280px;
             margin: 0 auto;
             text-align: center;
-            padding: 6rem 2rem;
-            color: white;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -137,6 +165,9 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
             animation: fadeInUp 1s ease 0.2s both;
         }
 
@@ -152,7 +183,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -179,14 +210,13 @@
             transform: translateY(-3px);
         }
 
-        /* About Section */
-        .about {
-            padding: 6rem 2rem;
-            background: var(--white);
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 5rem 2rem;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
@@ -197,37 +227,45 @@
 
         .section-subtitle {
             display: inline-block;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--primary);
+            background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(124,58,237,0.1));
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
             margin-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--dark);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .highlight {
-            background: var(--gradient-1);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .about-text {
             font-size: 1.1rem;
-            color: var(--gray);
+            color: var(--gray-600);
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
         .stats-grid {
@@ -240,8 +278,8 @@
         .stat-item {
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(124,58,237,0.05));
+            border-radius: 12px;
         }
 
         .stat-number {
@@ -253,70 +291,30 @@
         }
 
         .stat-label {
-            color: var(--gray);
+            color: var(--gray-600);
             font-size: 0.9rem;
         }
 
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .experience-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--gradient-2);
-            color: white;
-            padding: 2rem;
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .experience-badge .years {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .experience-badge .text {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Expertise Section */
+        /* ===== EXPERTISE SECTION ===== */
         .expertise {
-            padding: 6rem 2rem;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
 
         .expertise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .expertise-card {
             background: var(--white);
             padding: 2.5rem 2rem;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
 
         .expertise-card::before {
@@ -326,9 +324,9 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: var(--gradient-1);
+            background: var(--primary-gradient);
             transform: scaleX(0);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
         .expertise-card:hover::before {
@@ -337,14 +335,14 @@
 
         .expertise-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-xl);
         }
 
         .expertise-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(124,58,237,0.1));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -362,12 +360,11 @@
         }
 
         .expertise-card p {
-            color: var(--gray);
+            color: var(--gray-600);
         }
 
-        /* Projects Section */
+        /* ===== PROJECTS SECTION ===== */
         .projects {
-            padding: 6rem 2rem;
             background: var(--white);
         }
 
@@ -375,33 +372,32 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .project-card {
             background: var(--white);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-xl);
         }
 
         .project-card-header {
             padding: 2rem 2rem 1rem;
-            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(124,58,237,0.05));
         }
 
         .project-type {
             display: inline-block;
             padding: 0.3rem 1rem;
-            background: var(--gradient-1);
-            color: white;
+            background: var(--primary-gradient);
+            color: var(--white);
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
@@ -418,14 +414,14 @@
         }
 
         .project-card-body p {
-            color: var(--gray);
+            color: var(--gray-600);
             margin-bottom: 1rem;
         }
 
         .project-meta {
             display: flex;
             gap: 1.5rem;
-            color: var(--gray);
+            color: var(--gray-600);
             font-size: 0.9rem;
         }
 
@@ -436,7 +432,7 @@
 
         .project-card-footer {
             padding: 1.5rem 2rem 2rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid var(--gray-200);
         }
 
         .project-link {
@@ -446,34 +442,39 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            transition: gap 0.3s;
+            transition: gap 0.3s ease;
         }
 
         .project-link:hover {
             gap: 1rem;
+            color: var(--primary-dark);
         }
 
-        /* Contact Section */
+        /* ===== CONTACT SECTION ===== */
         .contact {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: var(--gradient-1);
+            color: var(--white);
         }
 
         .contact-wrapper {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .contact h2 {
-            color: white;
-            margin-bottom: 1rem;
+        .contact .section-subtitle {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+
+        .contact .section-title {
+            color: var(--white);
         }
 
         .contact p {
+            color: rgba(255,255,255,0.9);
             margin-bottom: 3rem;
-            opacity: 0.9;
+            font-size: 1.1rem;
         }
 
         .contact-grid {
@@ -486,9 +487,9 @@
         .contact-item {
             padding: 2rem;
             background: rgba(255,255,255,0.1);
-            border-radius: 10px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
         .contact-item:hover {
@@ -503,23 +504,23 @@
 
         .contact-item h3 {
             margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
-        .contact-item a {
-            color: white;
+        .contact-item a,
+        .contact-item span {
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
-            opacity: 0.9;
         }
 
         .contact-item a:hover {
-            opacity: 1;
             text-decoration: underline;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .social-links a {
@@ -530,26 +531,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: white;
+            background: var(--white);
             color: var(--primary);
             transform: translateY(-3px);
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer {
             background: var(--dark);
-            color: white;
+            color: var(--white);
             text-align: center;
             padding: 2rem;
         }
 
-        /* Animations */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -561,7 +562,7 @@
             }
         }
 
-        /* Responsive Design */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -569,14 +570,6 @@
             
             .hero h1 {
                 font-size: 2.5rem;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
             }
             
             .section-title {
@@ -587,14 +580,18 @@
                 grid-template-columns: 1fr;
             }
             
-            .experience-badge {
-                width: 100px;
-                height: 100px;
-                padding: 1rem;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
             
-            .experience-badge .years {
-                font-size: 1.5rem;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -630,31 +627,22 @@
                 <span class="section-subtitle">About Me</span>
                 <h2 class="section-title">Dedicated to Environmental <span class="highlight">Excellence</span></h2>
             </div>
-            <div class="about-grid">
-                <div class="about-content">
-                    <p class="about-text">I am an experienced Environmental Analyst specializing in GIS technology and environmental impact assessment. My work focuses on providing data-driven solutions for complex environmental challenges, from shoreline erosion analysis to comprehensive flood risk assessments.</p>
-                    <p class="about-text">With a strong background in remediation analytics and land use analysis, I help organizations make informed decisions about environmental management and sustainable development.</p>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number">15+</span>
-                            <span class="stat-label">Projects</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">8+</span>
-                            <span class="stat-label">Years Exp</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">6</span>
-                            <span class="stat-label">Reports</span>
-                        </div>
+            <div class="about-content">
+                <p class="about-text">I am an experienced Environmental Analyst specializing in GIS technology and environmental impact assessment. My work focuses on providing data-driven solutions for complex environmental challenges, from shoreline erosion analysis to comprehensive flood risk assessments.</p>
+                <p class="about-text">With a strong background in remediation analytics and land use analysis, I help organizations make informed decisions about environmental management and sustainable development.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Projects Completed</span>
                     </div>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Environmental Analysis">
-                    <div class="experience-badge">
-                        <span class="years">8+</span>
-                        <span class="text">Years Experience</span>
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Technical Reports</span>
                     </div>
                 </div>
             </div>
@@ -721,6 +709,7 @@
                 <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
             </div>
             <div class="projects-grid">
+                <!-- Ataba Remediation -->
                 <div class="project-card">
                     <div class="project-card-header">
                         <span class="project-type">Remediation</span>
@@ -738,6 +727,7 @@
                     </div>
                 </div>
 
+                <!-- Bodo Remediation -->
                 <div class="project-card">
                     <div class="project-card-header">
                         <span class="project-type">Impact Assessment</span>
@@ -755,9 +745,10 @@
                     </div>
                 </div>
 
+                <!-- Bodo Land Use -->
                 <div class="project-card">
                     <div class="project-card-header">
-                        <span class="project-type">Land Cover Analysis</span>
+                        <span class="project-type">Land Cover</span>
                         <h3>Bodo Land Use Analysis</h3>
                     </div>
                     <div class="project-card-body">
@@ -772,6 +763,7 @@
                     </div>
                 </div>
 
+                <!-- Flood Risk -->
                 <div class="project-card">
                     <div class="project-card-header">
                         <span class="project-type">Risk Assessment</span>
@@ -789,6 +781,7 @@
                     </div>
                 </div>
 
+                <!-- Forcados Erosion -->
                 <div class="project-card">
                     <div class="project-card-header">
                         <span class="project-type">Coastal Analysis</span>
@@ -806,6 +799,7 @@
                     </div>
                 </div>
 
+                <!-- Route Investigation -->
                 <div class="project-card">
                     <div class="project-card-header">
                         <span class="project-type">Infrastructure</span>
@@ -829,7 +823,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-wrapper">
-                <h2 class="section-title">Let's Work Together</h2>
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Let's Work <span class="highlight">Together</span></h2>
                 <p>Interested in collaborating or need environmental analysis expertise? I'm here to help with your next project.</p>
                 
                 <div class="contact-grid">
@@ -846,7 +841,7 @@
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Location</h3>
-                        <p>Lagos, Nigeria</p>
+                        <span>Lagos, Nigeria</span>
                     </div>
                 </div>
 
@@ -854,7 +849,6 @@
                     <a href="https://github.com/A-Ojeh" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-researchgate"></i></a>
                 </div>
             </div>
         </div>
